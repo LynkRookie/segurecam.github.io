@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - SecureCam Pro</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="light-mode">
+    <header class="dashboard-header">
+        <div class="container header-container">
+            <div class="header-left">
+                <button id="menu-toggle" class="menu-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+                <div class="logo">
+                    <i data-lucide="shield" class="logo-icon"></i>
+                    <span class="logo-text">SecureCam</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="dashboard.html" class="nav-link active">
+                        <i data-lucide="boxes"></i>
+                        Panel de Control
+                    </a>
+                    <a href="add-camera.html" class="nav-link">
+                        <i data-lucide="plus-circle"></i>
+                        Añadir cámara
+                    </a>
+                    <a href="settings.html" class="nav-link">
+                        <i data-lucide="settings"></i>
+                        Configuración
+                    </a>
+                    <a href="users.html" class="nav-link">
+                        <i data-lucide="users"></i>
+                        Usuarios
+                    </a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <button id="search-toggle" class="icon-button">
+                    <i data-lucide="search"></i>
+                </button>
+                <div id="search-container" class="search-container hidden">
+                    <input type="text" class="search-input" placeholder="Buscar cámaras, grabaciones...">
+                    <button class="search-close">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="dropdown">
+                    <button class="icon-button notification-button">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">Notificaciones</div>
+                        <div class="dropdown-divider"></div>
+                        <div class="notifications-list">
+                            <div class="notification-item">
+                                <div class="notification-header">
+                                    <span class="notification-indicator"></span>
+                                    <span class="notification-title">Movimiento detectado</span>
+                                    <span class="notification-time">Hace 5 min</span>
+                                </div>
+                                <p class="notification-content">Se detectó movimiento en la cámara "Entrada Principal"</p>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-header">
+                                    <span class="notification-indicator"></span>
+                                    <span class="notification-title">Cámara desconectada</span>
+                                    <span class="notification-time">Hace 20 min</span>
+                                </div>
+                                <p class="notification-content">La cámara "Pasillo" se ha desconectado</p>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-header">
+                                    <span class="notification-indicator"></span>
+                                    <span class="notification-title">Persona detectada</span>
+                                    <span class="notification-time">Hace 1 hora</span>
+                                </div>
+                                <p class="notification-content">Se detectó una persona en la cámara "Patio Trasero"</p>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item-center">Ver todas las notificaciones</a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="icon-button">
+                    <i data-lucide="moon" class="theme-icon-dark"></i>
+                    <i data-lucide="sun" class="theme-icon-light hidden"></i>
+                </button>
+                <div class="dropdown">
+                    <button class="icon-button user-button">
+                        <i data-lucide="user"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">Mi cuenta</div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i data-lucide="user"></i>
+                            Perfil
+                        </a>
+                        <a href="settings.html" class="dropdown-item">
+                            <i data-lucide="settings"></i>
+                            Configuración
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item">
+                            <i data-lucide="log-out"></i>
+                            Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-link active">
+                <i data-lucide="boxes"></i>
+                Panel de Control
+            </a>
+            <a href="add-camera.html" class="mobile-nav-link">
+                <i data-lucide="plus-circle"></i>
+                Añadir cámara
+            </a>
+            <a href="settings.html" class="mobile-nav-link">
+                <i data-lucide="settings"></i>
+                Configuración
+            </a>
+            <a href="users.html" class="mobile-nav-link">
+                <i data-lucide="users"></i>
+                Usuarios
+            </a>
+        </nav>
+    </div>
+
+    <main class="dashboard-main">
+        <div class="container">
+        
+
+            <!-- Dashboard Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <h3 class="stat-title">Cámaras activas</h3>
+                        <i data-lucide="camera" class="stat-icon"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">5/6</div>
+                        <p class="stat-description">83% de cámaras conectadas</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <h3 class="stat-title">Alertas hoy</h3>
+                        <i data-lucide="alert-triangle" class="stat-icon"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">12</div>
+                        <p class="stat-description">+4 desde ayer</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <h3 class="stat-title">Tiempo de grabación</h3>
+                        <i data-lucide="clock" class="stat-icon"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">8.5h</div>
+                        <p class="stat-description">Hoy (todas las cámaras)</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <h3 class="stat-title">Almacenamiento</h3>
+                        <i data-lucide="hard-drive" class="stat-icon"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">68%</div>
+                        <p class="stat-description">245.8 GB disponibles</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts and System Status -->
+            <div class="dashboard-row">
+                <div class="card alerts-card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">
+                                <i data-lucide="alert-triangle" class="card-icon alert-icon"></i>
+                                Alertas recientes
+                            </h3>
+                            <p class="card-description">Últimos eventos de seguridad detectados</p>
+                        </div>
+                        <button class="btn btn-text">Ver todas</button>
+                    </div>
+                    <div class="card-content">
+                        <div class="alerts-list">
+                            <!-- Alerts will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <div class="card system-status-card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i data-lucide="gauge" class="card-icon"></i>
+                            Estado del sistema
+                        </h3>
+                        <p class="card-description">Rendimiento y salud del sistema</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="system-metrics">
+                            <div class="metric">
+                                <div class="metric-header">
+                                    <span class="metric-name">CPU</span>
+                                    <span class="metric-value">28%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 28%"></div>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-header">
+                                    <span class="metric-name">Memoria</span>
+                                    <span class="metric-value">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-header">
+                                    <span class="metric-name">Almacenamiento</span>
+                                    <span class="metric-value">68%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill warning" style="width: 68%"></div>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-header">
+                                    <span class="metric-name">Red</span>
+                                    <span class="metric-value">12 Mbps</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill success" style="width: 32%"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-outline btn-sm btn-full">
+                                <i data-lucide="cpu"></i>
+                                Ver detalles
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs Section -->
+            <div class="tabs dashboard-tabs">
+                <div class="tabs-header">
+                    <button class="tab-button active" data-tab="live">
+                        <i data-lucide="eye"></i>
+                        <span>En vivo</span>
+                    </button>
+                    <button class="tab-button" data-tab="recordings">
+                        <i data-lucide="film"></i>
+                        <span>Grabaciones</span>
+                    </button>
+                    <button class="tab-button" data-tab="analytics">
+                        <i data-lucide="bar-chart-3"></i>
+                        <span>Análisis</span>
+                    </button>
+                    <button class="tab-button" data-tab="ai">
+                        <i data-lucide="brain"></i>
+                        <span>IA</span>
+                    </button>
+                    <button class="tab-button" data-tab="map">
+                        <i data-lucide="map"></i>
+                        <span>Mapa</span>
+                    </button>
+                    <button class="tab-button" data-tab="system">
+                        <i data-lucide="cpu"></i>
+                        <span>Sistema</span>
+                    </button>
+                </div>
+                <div class="tabs-content">
+                    <div class="tab-pane active" id="live">
+                        <div class="camera-grid-header">
+                            <div>
+                                <h2 class="section-title">Cámaras en vivo</h2>
+                                <p class="section-description">5 de 6 cámaras conectadas</p>
+                            </div>
+                            <div class="camera-grid-actions">
+                                <button class="btn btn-outline btn-sm" id="grid-size-toggle">
+                                    <i data-lucide="grid-3x3"></i>
+                                    3×3
+                                </button>
+                                <button class="btn btn-outline btn-sm" id="view-toggle">
+                                    <i data-lucide="maximize-2"></i>
+                                    Vista única
+                                </button>
+                            </div>
+                        </div>
+                        <div class="camera-grid" id="camera-grid">
+                            <!-- Camera cards will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="recordings">
+                        <div class="recordings-grid">
+                            <!-- Recording cards will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="analytics">
+                        <div class="analytics-grid">
+                            <div class="card analytics-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i data-lucide="activity"></i>
+                                        Actividad por cámara
+                                    </h3>
+                                    <p class="card-description">Detecciones de movimiento en las últimas 24 horas</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="chart-placeholder">
+                                        <p>Gráfico de actividad por cámara</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card analytics-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i data-lucide="users"></i>
+                                        Detección de personas
+                                    </h3>
+                                    <p class="card-description">Personas detectadas por hora</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="chart-placeholder">
+                                        <p>Gráfico de detección de personas</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card analytics-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i data-lucide="alert-triangle"></i>
+                                        Alertas generadas
+                                    </h3>
+                                    <p class="card-description">Distribución de alertas por tipo</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="chart-placeholder">
+                                        <p>Gráfico de distribución de alertas</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card analytics-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i data-lucide="shield"></i>
+                                        Estado del sistema
+                                    </h3>
+                                    <p class="card-description">Rendimiento y estado de las cámaras</p>
+                                </div>
+                                <div class="card-content">
+                                    <div class="chart-placeholder">
+                                        <p>Gráfico de estado del sistema</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="ai">
+                        <!-- AI content will be loaded via JavaScript -->
+                        <div class="ai-placeholder">
+                            <p>Cargando análisis de IA...</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="map">
+                        <!-- Map content will be loaded via JavaScript -->
+                        <div class="map-placeholder">
+                            <p>Cargando mapa de cámaras...</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="system">
+                        <!-- System content will be loaded via JavaScript -->
+                        <div class="system-placeholder">
+                            <p>Cargando información del sistema...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity and Predictions -->
+            <div class="dashboard-row">
+                <div class="card events-card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i data-lucide="zap" class="card-icon warning-icon"></i>
+                            Actividad reciente
+                        </h3>
+                        <p class="card-description">Últimas acciones del sistema</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="events-timeline" id="events-timeline">
+                            <!-- Events will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <div class="card predictions-card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i data-lucide="layers" class="card-icon info-icon"></i>
+                            Análisis predictivo
+                        </h3>
+                        <p class="card-description">Predicciones basadas en patrones históricos</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="predictions-content">
+                            <div class="prediction-box info">
+                                <div class="prediction-header">
+                                    <i data-lucide="network" class="prediction-icon"></i>
+                                    <h4 class="prediction-title">Predicción de actividad</h4>
+                                </div>
+                                <p class="prediction-description">
+                                    Basado en patrones históricos, se espera un aumento de actividad en las siguientes áreas:
+                                </p>
+                                <div class="prediction-items">
+                                    <div class="prediction-item">
+                                        <span class="item-name">Entrada Principal</span>
+                                        <span class="badge info">Alta</span>
+                                    </div>
+                                    <div class="prediction-item">
+                                        <span class="item-name">Patio Trasero</span>
+                                        <span class="badge warning">Media</span>
+                                    </div>
+                                    <div class="prediction-item">
+                                        <span class="item-name">Garaje</span>
+                                        <span class="badge success">Baja</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prediction-box warning">
+                                <div class="prediction-header">
+                                    <i data-lucide="fingerprint" class="prediction-icon"></i>
+                                    <h4 class="prediction-title">Patrones detectados</h4>
+                                </div>
+                                <p class="prediction-description">
+                                    Se han identificado los siguientes patrones recurrentes:
+                                </p>
+                                <ul class="pattern-list">
+                                    <li class="pattern-item">
+                                        <i data-lucide="boxes" class="pattern-icon"></i>
+                                        Movimiento frecuente en la entrada principal entre 8:00 - 9:00 AM
+                                    </li>
+                                    <li class="pattern-item">
+                                        <i data-lucide="boxes" class="pattern-icon"></i>
+                                        Actividad inusual en el patio trasero los fines de semana
+                                    </li>
+                                    <li class="pattern-item">
+                                        <i data-lucide="boxes" class="pattern-icon"></i>
+                                        Posible patrón de entrega de paquetes los martes y jueves
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-outline btn-full">
+                                <i data-lucide="brain"></i>
+                                Ver análisis completo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/theme.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

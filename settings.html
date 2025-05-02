@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Panel de Seguridad</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <!-- El contenido del sidebar se cargará mediante JavaScript -->
+        </div>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header id="header" class="header">
+                <!-- El contenido del header se cargará mediante JavaScript -->
+            </header>
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-y-auto p-4 md:p-6">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Configuración</h1>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+                        <!-- Tabs de navegación -->
+                        <div class="border-b border-gray-200 dark:border-gray-700">
+                            <nav class="flex -mb-px">
+                                <button id="tab-general" class="tab-btn tab-active">
+                                    <i data-feather="settings" class="w-4 h-4 mr-2"></i>
+                                    General
+                                </button>
+                                <button id="tab-notifications" class="tab-btn">
+                                    <i data-feather="bell" class="w-4 h-4 mr-2"></i>
+                                    Notificaciones
+                                </button>
+                                <button id="tab-storage" class="tab-btn">
+                                    <i data-feather="hard-drive" class="w-4 h-4 mr-2"></i>
+                                    Almacenamiento
+                                </button>
+                                <button id="tab-security" class="tab-btn">
+                                    <i data-feather="shield" class="w-4 h-4 mr-2"></i>
+                                    Seguridad
+                                </button>
+                            </nav>
+                        </div>
+                        
+                        <!-- Contenido de las pestañas -->
+                        <div class="p-6">
+                            <!-- Pestaña General -->
+                            <div id="content-general" class="tab-content">
+                                <form id="general-settings-form" class="space-y-6">
+                                    <div class="space-y-4">
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-white">Preferencias de Apariencia</h2>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm text-gray-700 dark:text-gray-300">Tema</span>
+                                            <div class="flex items-center space-x-2">
+                                                <button type="button" id="theme-light" class="theme-btn">
+                                                    <i data-feather="sun" class="w-5 h-5"></i>
+                                                    <span>Claro</span>
+                                                </button>
+                                                <button type="button" id="theme-dark" class="theme-btn">
+                                                    <i data-feather="moon" class="w-5 h-5"></i>
+                                                    <span>Oscuro</span>
+                                                </button>
+                                                <button type="button" id="theme-system" class="theme-btn">
+                                                    <i data-feather="monitor" class="w-5 h-5"></i>
+                                                    <span>Sistema</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm text-gray-700 dark:text-gray-300">Idioma</span>
+                                            <select id="language-select" class="form-select w-40">
+                                                <option value="es">Español</option>
+                                                <option value="en">English</option>
+                                                <option value="fr">Français</option>
+                                                <option value="de">Deutsch</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm text-gray-700 dark:text-gray-300">Zona Horaria</span>
+                                            <select id="timezone-select" class="form-select w-64">
+                                                <option value="America/Mexico_City">América/Ciudad de México (UTC-6)</option>
+                                                <option value="America/New_York">América/Nueva York (UTC-5)</option>
+                                                <option value="Europe/Madrid">Europa/Madrid (UTC+1)</option>
+                                                <option value="Europe/London">Europa/Londres (UTC+0)</option>
+                                                <option value="Asia/Tokyo">Asia/Tokio (UTC+9)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-white">Configuración del Panel</h2>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm text-gray-700 dark:text-gray-300">Actualización Automática</span>
+                                            <select id="refresh-interval" class="form-select w-40">
+                                                <option value="0">Desactivado</option>
+                                                <option value="10">10 segundos</option>
+                                                <option value="30">30 segundos</option>
+                                                <option value="60">1 minuto</option>
+                                                <option value="300">5 minutos</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-sm text-gray-700 dark:text-gray-300">Vista Predeterminada</span>
+                                            <select id="default-view" class="form-select w-40">
+                                                <option value="grid">Cuadrícula</option>
+                                                <option value="list">Lista</option>
+                                                <option value="map">Mapa</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="show-offline-cameras" class="form-checkbox">
+                                            <label for="show-offline-cameras" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                Mostrar cámaras desconectadas
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="enable-animations" class="form-checkbox" checked>
+                                            <label for="enable-animations" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                Habilitar animaciones
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="pt-4 flex justify-end">
+                                        <button type="submit" class="btn-primary">
+                                            <i data-feather="save" class="w-4 h-4 mr-2"></i>
+                                            Guardar Cambios
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Pestaña Notificaciones -->
+                            <div id="content-notifications" class="tab-content hidden">
+                                <form id="notifications-settings-form" class="space-y-6">
+                                    <div class="space-y-4">
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-white">Configuración de Alertas</h2>
+                                        
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="enable-notifications" class="form-checkbox" checked>
+                                            <label for="enable-notifications" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                Habilitar notificaciones
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="space-y-3 pl-6">
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="notify-motion" class="form-checkbox" checked>
+                                                <label for="notify-motion" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                    Detección de movimiento
+                                                </label>
+                                            </div>
+                                            
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="notify-offline" class="form-checkbox" checked>
+                                                <label for="notify-offline" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                    Cámara desconectada
+                                                </label>
+                                            </div>
+                                            
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="notify-storage" class="form-checkbox" checked>
+                                                <label for="notify-storage" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                    Almacenamiento bajo
+                                                </label>
+                                            </div>
+                                            
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="notify-system" class="form-checkbox" checked>
+                                                <label for="notify-system" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                    Alertas del sistema
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-white">Métodos de Notificación</h2>
+                                        
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="notify-browser" class="form-checkbox" checked>
+                                            <label for="notify-browser" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                Notificaciones del navegador
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="notify-email" class="form-checkbox">
+                                            <label for="notify-email" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                Correo electrónico
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="pl-6 space-y-2">
+                                            <div class="space-y-1">
+                                                <label for="email-address" class="block text-xs text-gray-700 dark:text-gray-400">
+                                                    Dirección de correo electrónico
+                                                </label>
+                                                <input type="email" id="email-address" class="form-input" placeholder="ejemplo@correo.com">
+                                            </div>
+                                            
+                                            <div class="space-y-1">
+                                                <label for="email-frequency" class="block text-xs text-gray-700 dark:text-gray-400">
+                                                    Frecuencia
+                                                </label>
+                                                <select id="email-frequency" class="form-select">
+                                                    <option value="immediate">Inmediata</option>
+                                                    <option value="hourly">Resumen por hora</option>
+                                                    <option value="daily">Resumen diario</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="notify-sms" class="form-checkbox">
+                                            <label for="notify-sms" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                SMS
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="pl-6 space-y-1">
+                                            <label for="phone-number" class="block text-xs text-gray-700 dark:text-gray-400">
+                                                Número de teléfono
+                                            </label>
+                                            <input type="tel" id="phone-number" class="form-input" placeholder="+1 234 567 8900">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="pt-4 flex justify-end">
+                                        <button type="submit" class="btn-primary">
+                                            <i data-feather="save" class="w-4 h-4 mr-2"></i>
+                                            Guardar Cambios
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Pestaña Almacenamiento -->
+                            <div id="content-storage" class="tab-content hidden">
+                                <div class="space-y-6">
+                                    <div class="space-y-4">
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-white">Uso de Almacenamiento</h2>
+                                        
+                                        <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
+                                            <div class="flex justify-between mb-2">
+                                                <span class="text-sm text-gray-700 dark:text-gray-300">Espacio utilizado</span>
+                                                <span class="text-sm font-medium text-gray-900 dark:text-white">1.2 TB / 2 TB</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 60%"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center">
+                                                        <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                                                        <span class="text-sm text-gray-700 dark:text-gray-300">Grabaciones</span>
+                                                    </div>
+                                                    <span class="text-sm font-medium text-gray-900 dark:text-white">850 GB</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center">
+                                                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                                        <span class="text-sm text-gray-700 dark:text-gray-300">Eventos</span>
+                                                    </div>
+                                                    <span class="text-sm font-medium text-gray-900 dark:text-white">250 GB</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center">
+                                                        <div class="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+                                                        <span class="text-sm text-gray-700 dark:text-gray-300">Instantáneas</span>
+                                                    </div>
+                                                    <span class="text-sm font-medium text-gray-900 dark:text-white">100 GB</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center">
+                                                        <div class="w-3 h-3 bg-gray-500 rounded-full mr-2"></div>
+                                                        <span class="text-sm text-gray-700 dark:text-gray-300">Otros</span>
+                                                    </div>
+                                                    <span class="text-sm font-medium text-gray-900 dark:text-white">50 GB</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-white">Configuración de Retención</h2>
+                                        
+                                        <form id="storage-settings-form" class="space-y-4">
+                                            <div class="space-y-2">
+                                                <label for="retention-period" class="block text-sm text-gray-700 dark:text-gray-300">
+                                                    Período de retención de grabaciones
+                                                </label>
+                                                <select id="retention-period" class="form-select">
+                                                    <option value="7">7 días</option>
+                                                    <option value="14">14 días</option>
+                                                    <option value="30" selected>30 días</option>
+                                                    <option value="60">60 días</option>
+                                                    <option value="90">90 días</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="space-y-2">
+                                                <label for="recording-quality" class="block text-sm text-gray-700 dark:text-gray-300">
+                                                    Calidad de grabación predeterminada
+                                                </label>
+                                                <select id="recording-quality" class="form-select">
+                                                    <option value="low">Baja (SD)</option>
+                                                    <option value="medium" selected>Media (HD)</option>
+                                                    <option value="high">Alta (Full HD)</option>
+                                                    <option value="ultra">Ultra (4K)</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="auto-delete" class="form-checkbox" checked>
+                                                <label for="auto-delete" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                    Eliminar automáticamente grabaciones antiguas
+                                                </label>
+                                            </div>
+                                            
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="low-storage-action" class="form-checkbox" checked>
+                                                <label for="low-storage-action" class="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                                                    Reducir calidad automáticamente cuando el almacenamiento esté bajo
+                                                </label>
+                                            </div>
+                                            
+                                            <div class="pt-4 flex justify-end">
+                                                <button type="submit" class="btn-primary">
+                                                    <i data-feather="save" class="w-4 h-4 mr-2"></i>
+                                                    Guardar Cambios
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Pestaña Seguridad -->
+                            <div id="content-security" class="tab-content hidden">
+                                <form id="security-settings-form" class="space-y-6">
+                                    <div class="space-y-4">
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-white">Cambiar Contraseña</h2>
+                                        
+                                        <div class="space-y-2">
+                                            <label for="current-password" class="block text-sm text-gray-700 dark:text-gray-300">
+                                                Contraseña Actual
+                                            </label>
+                                            <input type="password" id="current-password" class="form-input" required>
+                                        </div>
+                                        
+                                        <div class="space-y-2">
+                                            <label for="new-password" class="block text-sm text-gray-700 dark:text-gray-300">
+                                                Nueva Contraseña
+                                            </label>
+                                            <input type="password" id="new-password" class="form-input" required>
+                                        </div>
+                                        
+                                        <div class="space-y-2">
+                                            <label for="confirm-password" class="block text-sm text-gray-700 dark:text-gray-300">
+                                                Confirmar Nueva Contraseña
+                                            </label>
+                                            <input type="password" id="confirm-password" class="form-input" required>
+                                        </div>
+                                        
+                                        <div class="pt-2">
+                                            <button type="button" id="change-password-btn" class="btn-secondary">
+                                                <i data-feather="key" class="w-4 h-4 mr-2"></i>
+                                                Cambiar Contraseña
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-white">Autenticación de Dos Factores</h2>
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="text-sm text-gray-700 dark:text-gray-300">
+                                                    La autenticación de dos factores añade una capa adicional de seguridad a tu cuenta.
+                                                </p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                                    Estado: <span class="font-medium text-red-500">Desactivado</span>
+                                                </p>
+                                            </div>
+                                            <button type="button" id="enable-2fa-btn" class="btn-secondary">
+                                                <i data-feather="shield" class="w-4 h-4 mr-2"></i>
+                                                Activar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-white">Sesiones Activas</h2>
+                                        
+                                        <div class="space-y-3">
+                                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                                <div class="flex items-start justify-between">
+                                                    <div>
+                                                        <p class="text-sm font-medium text-gray-900 dark:text-white">
+                                                            Este dispositivo
+                                                        </p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                                            Windows 10 • Chrome • Ciudad de México
+                                                        </p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                                                            Última actividad: Ahora mismo
+                                                        </p>
+                                                    </div>
+                                                    <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                                                        Actual
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                                <div class="flex items-start justify-between">
+                                                    <div>
+                                                        <p class="text-sm font-medium text-gray-900 dark:text-white">
+                                                            iPhone 13
+                                                        </p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                                            iOS 15 • Safari • Ciudad de México
+                                                        </p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                                                            Última actividad: Hace 2 horas
+                                                        </p>
+                                                    </div>
+                                                    <button type="button" class="text-xs text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">
+                                                        Cerrar sesión
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="pt-2">
+                                            <button type="button" id="logout-all-btn" class="btn-secondary text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300">
+                                                <i data-feather="log-out" class="w-4 h-4 mr-2"></i>
+                                                Cerrar todas las sesiones
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>

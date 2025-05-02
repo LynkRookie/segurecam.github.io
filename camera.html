@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Cámara - SecureCam Pro</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="light-mode">
+    <header class="dashboard-header">
+        <div class="container header-container">
+            <div class="header-left">
+                <button id="menu-toggle" class="menu-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+                <div class="logo">
+                    <i data-lucide="shield" class="logo-icon"></i>
+                    <span class="logo-text">SecureCam</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="dashboard.html" class="nav-link">
+                        <i data-lucide="boxes"></i>
+                        Panel de Control
+                    </a>
+                    <a href="add-camera.html" class="nav-link">
+                        <i data-lucide="plus-circle"></i>
+                        Añadir cámara
+                    </a>
+                    <a href="settings.html" class="nav-link">
+                        <i data-lucide="settings"></i>
+                        Configuración
+                    </a>
+                    <a href="users.html" class="nav-link">
+                        <i data-lucide="users"></i>
+                        Usuarios
+                    </a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <button id="search-toggle" class="icon-button">
+                    <i data-lucide="search"></i>
+                </button>
+                <div id="search-container" class="search-container hidden">
+                    <input type="text" class="search-input" placeholder="Buscar cámaras, grabaciones...">
+                    <button class="search-close">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="dropdown">
+                    <button class="icon-button notification-button">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">Notificaciones</div>
+                        <div class="dropdown-divider"></div>
+                        <div class="notifications-list">
+                            <div class="notification-item">
+                                <div class="notification-header">
+                                    <span class="notification-indicator"></span>
+                                    <span class="notification-title">Movimiento detectado</span>
+                                    <span class="notification-time">Hace 5 min</span>
+                                </div>
+                                <p class="notification-content">Se detectó movimiento en la cámara "Entrada Principal"</p>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-header">
+                                    <span class="notification-indicator"></span>
+                                    <span class="notification-title">Cámara desconectada</span>
+                                    <span class="notification-time">Hace 20 min</span>
+                                </div>
+                                <p class="notification-content">La cámara "Pasillo" se ha desconectado</p>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-header">
+                                    <span class="notification-indicator"></span>
+                                    <span class="notification-title">Persona detectada</span>
+                                    <span class="notification-time">Hace 1 hora</span>
+                                </div>
+                                <p class="notification-content">Se detectó una persona en la cámara "Patio Trasero"</p>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item-center">Ver todas las notificaciones</a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="icon-button">
+                    <i data-lucide="moon" class="theme-icon-dark"></i>
+                    <i data-lucide="sun" class="theme-icon-light hidden"></i>
+                </button>
+                <div class="dropdown">
+                    <button class="icon-button user-button">
+                        <i data-lucide="user"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">Mi cuenta</div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i data-lucide="user"></i>
+                            Perfil
+                        </a>
+                        <a href="settings.html" class="dropdown-item">
+                            <i data-lucide="settings"></i>
+                            Configuración
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item">
+                            <i data-lucide="log-out"></i>
+                            Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-link">
+                <i data-lucide="boxes"></i>
+                Panel de Control
+            </a>
+            <a href="add-camera.html" class="mobile-nav-link">
+                <i data-lucide="plus-circle"></i>
+                Añadir cámara
+            </a>
+            <a href="settings.html" class="mobile-nav-link">
+                <i data-lucide="settings"></i>
+                Configuración
+            </a>
+            <a href="users.html" class="mobile-nav-link">
+                <i data-lucide="users"></i>
+                Usuarios
+            </a>
+        </nav>
+    </div>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <div class="camera-header">
+                <a href="dashboard.html" class="btn btn-ghost">
+                    <i data-lucide="arrow-left"></i>
+                    Volver
+                </a>
+                <div>
+                    <h1 class="page-title">Cámara <span id="camera-id">1</span></h1>
+                    <p class="page-description" id="camera-location">Entrada Principal</p>
+                </div>
+                <div class="camera-actions">
+                    <button class="btn btn-outline btn-sm">
+                        <i data-lucide="share-2"></i>
+                        Compartir
+                    </button>
+                    <button class="btn btn-outline btn-sm">
+                        <i data-lucide="save"></i>
+                        Guardar preset
+                    </button>
+                </div>
+            </div>
+
+            <div class="camera-layout" id="camera-layout">
+                <div class="camera-main">
+                    <div class="card camera-player-card">
+                        <div class="camera-player">
+                            <video id="camera-video" poster="img/placeholder-camera.jpg" loop>
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                                Tu navegador no soporta la reproducción de video.
+                            </video>
+                            
+                            <div class="camera-overlay">
+                                <div class="camera-info">
+                                    <span class="camera-badge">Cámara <span id="overlay-camera-id">1</span> - <span id="overlay-camera-location">Entrada Principal</span></span>
+                                    
+                                    <div class="camera-status-badges">
+                                        <span class="camera-status-badge motion hidden" id="motion-badge">
+                                            <i data-lucide="alert-triangle"></i>
+                                            Movimiento detectado
+                                        </span>
+                                        <span class="camera-status-badge recording hidden" id="recording-badge">
+                                            <span class="recording-indicator"></span>
+                                            Grabando
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="camera-controls">
+                                    <div class="progress-bar">
+                                        <div class="progress-time">00:00</div>
+                                        <div class="progress-track">
+                                            <div class="progress-fill"></div>
+                                        </div>
+                                        <div class="progress-duration">00:00</div>
+                                    </div>
+                                    
+                                    <div class="controls-row">
+                                        <div class="left-controls">
+                                            <button class="control-button" id="play-pause-btn">
+                                                <i data-lucide="play" id="play-icon"></i>
+                                                <i data-lucide="pause" id="pause-icon" class="hidden"></i>
+                                            </button>
+                                            <button class="control-button" id="mute-btn">
+                                                <i data-lucide="volume-2" id="volume-icon"></i>
+                                                <i data-lucide="volume-x" id="mute-icon" class="hidden"></i>
+                                            </button>
+                                            <div class="volume-slider">
+                                                <input type="range" min="0" max="100" value="70" id="volume-slider">
+                                            </div>
+                                        </div>
+                                        <div class="right-controls">
+                                            <button class="control-button" id="snapshot-btn">
+                                                <i data-lucide="image"></i>
+                                            </button>
+                                            <button class="control-button" id="record-btn">
+                                                <i data-lucide="camera"></i>
+                                            </button>
+                                            <button class="control-button" id="fullscreen-btn">
+                                                <i data-lucide="maximize-2"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="camera-controls-panel">
+                            <div class="ptz-controls">
+                                <div class="ptz-up">
+                                    <button class="ptz-button">
+                                        <i data-lucide="chevron-up"></i>
+                                    </button>
+                                </div>
+                                <div class="ptz-middle">
+                                    <button class="ptz-button">
+                                        <i data-lucide="chevron-left"></i>
+                                    </button>
+                                    <button class="ptz-button">
+                                        <i data-lucide="chevron-down"></i>
+                                    </button>
+                                    <button class="ptz-button">
+                                        <i data-lucide="chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="ptz-zoom">
+                                    <button class="ptz-button">
+                                        <i data-lucide="minus"></i>
+                                    </button>
+                                    <button class="ptz-button">
+                                        <i data-lucide="plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="preset-buttons">
+                                <button class="preset-button">
+                                    <i data-lucide="camera"></i>
+                                    Entrada
+                                </button>
+                                <button class="preset-button">
+                                    <i data-lucide="camera"></i>
+                                    Panorámica
+                                </button>
+                                <button class="preset-button">
+                                    <i data-lucide="camera"></i>
+                                    Zoom
+                                </button>
+                                <button class="preset-button">
+                                    <i data-lucide="camera"></i>
+                                    Esquina
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="camera-sidebar">
+                    <div class="tabs">
+                        <div class="tabs-header">
+                            <button class="tab-button active" data-tab="recordings">
+                                <i data-lucide="film"></i>
+                                Grabaciones
+                            </button>
+                            <button class="tab-button" data-tab="analytics">
+                                <i data-lucide="bar-chart-3"></i>
+                                Análisis
+                            </button>
+                            <button class="tab-button" data-tab="settings">
+                                <i data-lucide="cog"></i>
+                                Ajustes
+                            </button>
+                        </div>
+                        <div class="tabs-content">
+                            <div class="tab-pane active" id="recordings">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="recordings-header">
+                                            <h3 class="recordings-title">
+                                                <i data-lucide="film"></i>
+                                                Grabaciones
+                                            </h3>
+                                            <button class="btn btn-outline btn-sm">
+                                                <i data-lucide="download"></i>
+                                                Exportar
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="recordings-filters">
+                                            <input type="text" placeholder="Buscar grabaciones..." class="recordings-search">
+                                            <select class="recordings-filter">
+                                                <option value="all">Todos los tipos</option>
+                                                <option value="motion">Movimiento</option>
+                                                <option value="scheduled">Programada</option>
+                                                <option value="manual">Manual</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="recordings-list">
+                                            <!-- Recordings will be inserted here by JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="analytics">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="analytics-header">
+                                            <h3 class="analytics-title">
+                                                <i data-lucide="bar-chart-3"></i>
+                                                Análisis de la cámara
+                                            </h3>
+                                            <div class="analytics-actions">
+                                                <select class="analytics-period">
+                                                    <option value="24h">Últimas 24 horas</option>
+                                                    <option value="7d">Últimos 7 días</option>
+                                                    <option value="30d">Últimos 30 días</option>
+                                                    <option value="custom">Personalizado</option>
+                                                </select>
+                                                <button class="btn btn-outline btn-sm">
+                                                    <i data-lucide="download"></i>
+                                                    Exportar
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="analytics-content">
+                                            <div class="chart-placeholder">
+                                                <p>Gráfico de detecciones de movimiento</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="settings">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="settings-header">
+                                            <h3 class="settings-title">
+                                                <i data-lucide="cog"></i>
+                                                Configuración de la cámara
+                                            </h3>
+                                            <button class="btn btn-outline btn-sm">
+                                                <i data-lucide="save"></i>
+                                                Guardar cambios
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="settings-tabs">
+                                            <div class="tabs-header">
+                                                <button class="tab-button active" data-tab="general">General</button>
+                                                <button class="tab-button" data-tab="video">Video</button>
+                                                <button class="tab-button" data-tab="alerts">Alertas</button>
+                                            </div>
+                                            <div class="tabs-content">
+                                                <div class="tab-pane active" id="general">
+                                                    <div class="settings-form">
+                                                        <div class="form-group">
+                                                            <label for="camera-name">Nombre de la cámara</label>
+                                                            <input type="text" id="camera-name" value="Cámara 1">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="camera-location">Ubicación</label>
+                                                            <input type="text" id="camera-location-input" value="Entrada Principal">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="camera-ip">Dirección IP</label>
+                                                            <input type="text" id="camera-ip" value="192.168.1.100">
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group">
+                                                                <label for="camera-port">Puerto</label>
+                                                                <input type="text" id="camera-port" value="554">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="camera-protocol">Protocolo</label>
+                                                                <select id="camera-protocol">
+                                                                    <option value="rtsp" selected>RTSP</option>
+                                                                    <option value="http">HTTP</option>
+                                                                    <option value="https">HTTPS</option>
+                                                                    <option value="onvif">ONVIF</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-switch">
+                                                            <label for="camera-enabled">Cámara habilitada</label>
+                                                            <label class="switch">
+                                                                <input type="checkbox" id="camera-enabled" checked>
+                                                                <span class="slider"></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-switch">
+                                                            <label for="camera-audio">Audio habilitado</label>
+                                                            <label class="switch">
+                                                                <input type="checkbox" id="camera-audio" checked>
+                                                                <span class="slider"></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-actions">
+                                                            <button class="btn btn-outline">
+                                                                <i data-lucide="rotate-ccw"></i>
+                                                                Reiniciar cámara
+                                                            </button>
+                                                            <button class="btn btn-danger">
+                                                                <i data-lucide="trash-2"></i>
+                                                                Eliminar cámara
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="video">
+                                                    <!-- Video settings content -->
+                                                </div>
+                                                <div class="tab-pane" id="alerts">
+                                                    <!-- Alerts settings content -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/theme.js"></script>
+    <script src="js/camera.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

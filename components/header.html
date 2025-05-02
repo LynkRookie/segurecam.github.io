@@ -1,0 +1,104 @@
+<div class="header-content">
+    <div class="flex items-center">
+        <button id="toggle-sidebar-btn" class="lg:hidden mr-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+            <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
+        
+        <div class="relative">
+            <input type="text" placeholder="Buscar..." class="header-search">
+            <i data-feather="search" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+        </div>
+    </div>
+    
+    <div class="flex items-center space-x-4">
+        <button id="theme-toggle-btn" class="header-btn">
+            <i data-feather="moon" class="w-5 h-5 dark:hidden"></i>
+            <i data-feather="sun" class="w-5 h-5 hidden dark:block"></i>
+        </button>
+        
+        <div class="relative">
+            <button id="notifications-btn" class="header-btn">
+                <i data-feather="bell" class="w-5 h-5"></i>
+                <span class="notification-badge">3</span>
+            </button>
+            
+            <div id="notifications-dropdown" class="dropdown-menu hidden">
+                <div class="dropdown-header">
+                    <h3 class="text-sm font-medium">Notificaciones</h3>
+                    <button class="text-xs text-blue-600 dark:text-blue-400">Marcar todas como leídas</button>
+                </div>
+                
+                <div class="dropdown-body">
+                    <a href="#" class="dropdown-item">
+                        <div class="flex-shrink-0">
+                            <div class="w-8 h-8 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center">
+                                <i data-feather="alert-circle" class="w-4 h-4 text-red-600 dark:text-red-400"></i>
+                            </div>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900 dark:text-white">Cámara desconectada</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">La cámara "Entrada Principal" está desconectada.</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500">Hace 5 minutos</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="dropdown-item">
+                        <div class="flex-shrink-0">
+                            <div class="w-8 h-8 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center">
+                                <i data-feather="alert-triangle" class="w-4 h-4 text-yellow-600 dark:text-yellow-400"></i>
+                            </div>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900 dark:text-white">Movimiento detectado</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Se detectó movimiento en la cámara "Patio Trasero".</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500">Hace 15 minutos</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="dropdown-item">
+                        <div class="flex-shrink-0">
+                            <div class="w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                                <i data-feather="check-circle" class="w-4 h-4 text-green-600 dark:text-green-400"></i>
+                            </div>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900 dark:text-white">Actualización completada</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">La actualización del sistema se completó correctamente.</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500">Hace 1 hora</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="dropdown-footer">
+                    <a href="#" class="text-sm text-blue-600 dark:text-blue-400">Ver todas las notificaciones</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="relative">
+            <button id="user-menu-btn" class="flex items-center">
+                <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                    <span class="text-sm font-medium text-blue-600 dark:text-blue-400">AU</span>
+                </div>
+                <span class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300 hidden md:block">Admin Usuario</span>
+                <i data-feather="chevron-down" class="w-4 h-4 ml-1 text-gray-400"></i>
+            </button>
+            
+            <div id="user-dropdown" class="dropdown-menu hidden">
+                <a href="#" class="dropdown-item">
+                    <i data-feather="user" class="w-4 h-4 mr-2"></i>
+                    <span>Mi Perfil</span>
+                </a>
+                <a href="settings.html" class="dropdown-item">
+                    <i data-feather="settings" class="w-4 h-4 mr-2"></i>
+                    <span>Configuración</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="login.html" class="dropdown-item text-red-600 dark:text-red-400">
+                    <i data-feather="log-out" class="w-4 h-4 mr-2"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Cámara - Panel de Seguridad</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/add-camera.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <!-- El contenido del sidebar se cargará mediante JavaScript -->
+        </div>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header id="header" class="header">
+                <!-- El contenido del header se cargará mediante JavaScript -->
+            </header>
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-y-auto p-4 md:p-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="flex items-center justify-between mb-6">
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Agregar Nueva Cámara</h1>
+                        <a href="dashboard.html" class="btn-secondary">
+                            <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>
+                            Volver al Panel
+                        </a>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                        <form id="add-camera-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label for="camera-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre de la Cámara</label>
+                                    <input type="text" id="camera-name" name="camera-name" class="form-input" placeholder="Ej: Cámara Entrada Principal" required>
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="camera-model" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Modelo</label>
+                                    <input type="text" id="camera-model" name="camera-model" class="form-input" placeholder="Ej: DS-2CD2385G1-I">
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="camera-ip" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Dirección IP</label>
+                                    <input type="text" id="camera-ip" name="camera-ip" class="form-input" placeholder="Ej: 192.168.1.100" required>
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="camera-port" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Puerto</label>
+                                    <input type="number" id="camera-port" name="camera-port" class="form-input" placeholder="Ej: 554" value="554">
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="camera-username" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Usuario</label>
+                                    <input type="text" id="camera-username" name="camera-username" class="form-input" placeholder="Ej: admin">
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="camera-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contraseña</label>
+                                    <input type="password" id="camera-password" name="camera-password" class="form-input">
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="camera-location" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Ubicación</label>
+                                    <input type="text" id="camera-location" name="camera-location" class="form-input" placeholder="Ej: Entrada Principal">
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="camera-type" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tipo de Cámara</label>
+                                    <select id="camera-type" name="camera-type" class="form-select">
+                                        <option value="ip">IP</option>
+                                        <option value="ptz">PTZ</option>
+                                        <option value="dome">Domo</option>
+                                        <option value="bullet">Bullet</option>
+                                        <option value="thermal">Térmica</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label for="camera-stream-url" class="block text-sm font-medium text-gray-700 dark:text-gray-300">URL del Stream</label>
+                                <input type="text" id="camera-stream-url" name="camera-stream-url" class="form-input" placeholder="Ej: rtsp://192.168.1.100:554/stream">
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Si se deja en blanco, se generará automáticamente a partir de la IP y el puerto.</p>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Características</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" id="feature-motion" name="feature-motion" class="form-checkbox">
+                                        <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Detección de Movimiento</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" id="feature-audio" name="feature-audio" class="form-checkbox">
+                                        <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Audio</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" id="feature-night" name="feature-night" class="form-checkbox">
+                                        <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Visión Nocturna</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" id="feature-ptz" name="feature-ptz" class="form-checkbox">
+                                        <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Control PTZ</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label for="camera-notes" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Notas</label>
+                                <textarea id="camera-notes" name="camera-notes" rows="3" class="form-textarea" placeholder="Notas adicionales sobre esta cámara..."></textarea>
+                            </div>
+                            
+                            <div class="pt-4 flex justify-end space-x-3">
+                                <button type="button" id="test-connection-btn" class="btn-secondary">
+                                    <i data-feather="wifi" class="w-4 h-4 mr-2"></i>
+                                    Probar Conexión
+                                </button>
+                                <button type="submit" class="btn-primary">
+                                    <i data-feather="plus-circle" class="w-4 h-4 mr-2"></i>
+                                    Agregar Cámara
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div id="preview-container" class="mt-6 bg-white dark:bg-gray-800 rounded-lg shadow p-6 hidden">
+                        <h2 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Vista Previa</h2>
+                        <div class="aspect-video bg-black rounded-lg flex items-center justify-center">
+                            <div id="camera-preview" class="w-full h-full">
+                                <div class="flex items-center justify-center h-full">
+                                    <p class="text-white">Conectando a la cámara...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/add-camera.js"></script>
+</body>
+</html>
